@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import { env } from './config/env';
 import { notFound, errorHandler } from './middleware/errors';
 import authRoutes from './routes/auth';
+import productRoutes from './routes/product';
 
 export function createApp(): Express {
   const app = express();
@@ -18,6 +19,7 @@ export function createApp(): Express {
     res.status(200).json({ status: 'ok' });
   });
   app.use('/api/auth', authRoutes);
+  app.use('/api/products', productRoutes);
 
   // --- Error handling (MUST come AFTER all routes) ---
   app.use(notFound);
