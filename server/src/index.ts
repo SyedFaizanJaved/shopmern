@@ -1,7 +1,15 @@
-import 'dotenv/config';
+import { env } from './config/env';
+import { connectDB } from './config/db';
 import { createApp } from './app';
 
-const port = Number(process.env.PORT ?? 5000);
-createApp().listen(port, () => {
-  console.log(`API listening on http://localhost:${port}`);
+async function start(): Promise<void> {
+  await connectDB(env.MONGO_URI);
+  createApp().listen(env.PORT, () => {
+    console.log(`🚀 API listening on http://localhost:${env.PORT}`);
+  });
+}
+
+start().catch((err) => {
+  console.error('Failed to start server:', err);
+  process.exit(1);
 });
