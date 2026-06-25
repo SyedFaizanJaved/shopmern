@@ -64,6 +64,12 @@ export function CartPage() {
           Total: <span className="text-emerald-400">${total.toFixed(2)}</span>
         </p>
       </div>
+      <Link
+        to="/checkout"
+        className="mt-6 block rounded bg-emerald-500 px-4 py-2 text-center font-semibold text-slate-900 hover:bg-emerald-400"
+      >
+        Proceed to checkout
+      </Link>
     </div>
   );
 }

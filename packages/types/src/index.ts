@@ -42,3 +42,34 @@ export interface Paginated<T> {
   total: number;
   totalPages: number;
 }
+
+export type PaymentStatus = 'pending' | 'paid' | 'failed';
+
+// Order line items are SNAPSHOTTED (name + price copied at purchase time) so a
+// historical order never changes if the product is later edited or deleted.
+export interface OrderItem {
+  product: string;
+  name: string;
+  price: number;
+  qty: number;
+}
+
+export interface ShippingAddress {
+  fullName: string;
+  line1: string;
+  city: string;
+  postalCode: string;
+  country: string;
+}
+
+export interface Order {
+  id: string;
+  user: string;
+  items: OrderItem[];
+  shippingAddress: ShippingAddress;
+  totalAmount: number;
+  paymentStatus: PaymentStatus;
+  stripePaymentIntentId?: string;
+  createdAt: string;
+  updatedAt: string;
+}

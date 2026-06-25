@@ -33,6 +33,9 @@ export function Navbar() {
           </Link>
           {user ? (
             <>
+              <Link to="/orders" className="hover:text-emerald-400">
+                Orders
+              </Link>
               <span className="text-slate-400">Hi, {user.name}</span>
               <button type="button" onClick={handleLogout} className="hover:text-emerald-400">
                 Logout

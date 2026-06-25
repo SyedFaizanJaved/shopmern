@@ -12,6 +12,8 @@ const envSchema = z.object({
   JWT_REFRESH_SECRET: z.string().min(16, 'JWT_REFRESH_SECRET must be at least 16 chars'),
   ACCESS_TOKEN_TTL: z.string().default('15m'),
   REFRESH_TOKEN_TTL: z.string().default('7d'),
+  STRIPE_SECRET_KEY: z.string().min(1, 'STRIPE_SECRET_KEY is required'),
+  STRIPE_WEBHOOK_SECRET: z.string().min(1, 'STRIPE_WEBHOOK_SECRET is required'),
 });
 
 const parsed = envSchema.safeParse(process.env);
