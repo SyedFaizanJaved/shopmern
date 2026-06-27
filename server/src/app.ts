@@ -6,6 +6,7 @@ import { notFound, errorHandler } from './middleware/errors';
 import { stripeWebhook } from './controllers/payment';
 import authRoutes from './routes/auth';
 import productRoutes from './routes/product';
+import reviewRoutes from './routes/review';
 import orderRoutes from './routes/order';
 
 export function createApp(): Express {
@@ -28,6 +29,7 @@ export function createApp(): Express {
   });
   app.use('/api/auth', authRoutes);
   app.use('/api/products', productRoutes);
+  app.use('/api/products/:id/reviews', reviewRoutes);
   app.use('/api/orders', orderRoutes);
 
   // --- Error handling (MUST come AFTER all routes) ---

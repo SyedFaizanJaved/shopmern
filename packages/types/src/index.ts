@@ -43,6 +43,17 @@ export interface Paginated<T> {
   totalPages: number;
 }
 
+export interface Review {
+  id: string;
+  product: string;
+  user: string;
+  userName: string;
+  rating: number;
+  comment: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export type PaymentStatus = 'pending' | 'paid' | 'failed';
 
 // Order line items are SNAPSHOTTED (name + price copied at purchase time) so a
